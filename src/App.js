@@ -16,7 +16,7 @@ function App() {
   const [lists, setLists] = useState(getStorage());
   const [isEdit, setIsEdit] = useState(false);
   const [editID, setEditID] = useState(null);
-  const [alert, setAlert] = useState({ show: false,type: "", Msg: "" });
+  const [alert, setAlert] = useState({ show: false, type: "", Msg: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ function App() {
       setName("");
       setEditID(null);
       setIsEdit(false);
-      showAlert(true,"success", "item changed");
+      showAlert(true, "success", "item changed");
     } else {
       showAlert(true, "success", "new item added");
       const newItem = { id: new Date().getTime().toString(), title: name };
@@ -44,15 +44,15 @@ function App() {
     }
   };
 
-  const showAlert = (show = false, type="", Msg = "") => {
-    setAlert({ show,type, Msg });
+  const showAlert = (show = false, type = "", Msg = "") => {
+    setAlert({ show, type, Msg });
   };
   const clearList = () => {
     showAlert(true, "danger", "there is no items left");
     setLists([]);
   };
   const deleteItem = (id) => {
-    showAlert(true, "success" , "item removed");
+    showAlert(true, "danger", "item removed");
     const newlist = lists.filter((item) => item.id !== id);
     setLists(newlist);
   };
@@ -69,28 +69,30 @@ function App() {
   }, [lists]);
   return (
     <section className="section-center">
+      <h1>todo list app</h1>
       <form className="todo-form" onSubmit={handleSubmit}>
         {alert.show && (
           <Alert {...alert} removeAlert={showAlert} lists={lists} />
         )}
-        <h1>todo app</h1>
         <div className="form-control">
           <input
             type="text"
             className="todo"
-            placeholder="Read Books"
+            placeholder="Input Task"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <button type="submit" className="submit-btn">
-            {isEdit ? "Edit" : "Add"}
+            {isEdit ? "Edit" : "Add "}
           </button>
         </div>
       </form>
       {lists.length > 0 && (
         <div className="todo-container">
           <TodoList lists={lists} deleteItem={deleteItem} editItem={editItem} />
-          <button className="clear-btn" onClick={clearList}>clear List</button>
+          <button className="clear-btn" onClick={clearList}>
+            clear List
+          </button>
         </div>
       )}
     </section>

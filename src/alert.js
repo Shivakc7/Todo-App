@@ -6,7 +6,7 @@ const Alert = ({type, Msg, removeAlert, lists}) => {
           removeAlert()
         }, 3000);
         return () => clearTimeout(timeout)
-      },[lists])
+      },[lists, removeAlert])
   return (
     <div className={`alert alert-${type}`}>{Msg}</div>
   )

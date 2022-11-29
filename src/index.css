@@ -30,10 +30,10 @@ body {
 .section-center:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
-.todo-form h1 {
+.section-center h1 {
   text-align: center;
   text-transform: capitalize;
-  color: rgb(4, 61, 63);
+  color: rgb(1, 99, 160);
   margin-top: 0;
 }
 .form-control {
@@ -43,7 +43,7 @@ body {
 .todo {  
   overflow: hidden;
   border-color: transparent;
-  padding: 0.25rem;
+  padding: 0.55rem;
   padding-left: 1rem;
   font-size: 1rem;
   flex: 1 0 auto;
@@ -112,7 +112,7 @@ todo::placeholder {
   transition: all 0.3s linear;
 }
 .edit-btn{
-  color: #6be675
+  color: #6be675;
 }
 .edit-btn:hover{
   color: #026802;
